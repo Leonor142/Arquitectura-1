@@ -59,6 +59,18 @@ public class RegistroMascota extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Edad");
 
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
+
+        txtEdad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEdadKeyTyped(evt);
+            }
+        });
+
         jLabel3.setText("Condicion");
 
         txtCondicion.setColumns(20);
@@ -80,6 +92,12 @@ public class RegistroMascota extends javax.swing.JInternalFrame {
         });
 
         jLabel4.setText("DNI del Dueño");
+
+        txtDniduenio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDniduenioKeyTyped(evt);
+            }
+        });
 
         tableMascota.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -196,6 +214,52 @@ public class RegistroMascota extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         limpiarCampos();
     }//GEN-LAST:event_jButton2MousePressed
+
+    private void txtDniduenioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniduenioKeyTyped
+        // TODO add your handling code here:
+        int key = evt.getKeyChar();
+
+    boolean numeros = key >= 48 && key <= 57;
+        
+    if (!numeros)
+    {
+        evt.consume();
+    }
+
+    if (txtDniduenio.getText().trim().length() == 8) {
+        evt.consume();
+    }
+    }//GEN-LAST:event_txtDniduenioKeyTyped
+
+    private void txtEdadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEdadKeyTyped
+        // TODO add your handling code here:
+             int key = evt.getKeyChar();
+
+    boolean numeros = key >= 48 && key <= 57;
+        
+    if (!numeros)
+    {
+        evt.consume();
+    }
+
+    if (txtEdad.getText().trim().length() == 2) {
+        evt.consume();
+    }
+    }//GEN-LAST:event_txtEdadKeyTyped
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        // TODO add your handling code here:
+        int key = evt.getKeyChar();
+
+    boolean mayusculas = key >= 65 && key <= 90;
+    boolean minusculas = key >= 97 && key <= 122;
+    boolean espacio = key == 32;
+            
+     if (!(minusculas || mayusculas || espacio))
+    {
+        evt.consume();
+    }
+    }//GEN-LAST:event_txtNombreKeyTyped
 
     private void tablaDesing(){
         modelMascotas = new DefaultTableModel(new Object[]{"Dueño", "Nombre Mascota", "Edad Mascota", "Condición"}, 0);
